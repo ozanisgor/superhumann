@@ -1,0 +1,2 @@
+class SuperHeroesController < ApplicationController
+end
