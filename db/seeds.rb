@@ -6,13 +6,21 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-puts "Cleaning database..."
-Champion.destroy_all
-puts "Creating superheroes..."
-the_hulk = { name: "The Hulk", universe: "Earth-616 - Prime Marvel Universe", description: "Human-Radiation" }
-superman =  { name: "superman", universe: "Prime Earth - Prime DC Comics Universe", description: "Kryptonian" }
-[ the_hulk, superman ].each do |attributes|
-  champion = Champion.create!(attributes)
-  puts "Created #{champion.name}"
-end
+puts "Cleaning user database..."
+User.destroy_all
+puts "Creating users..."
+user1 = User.create(username: "username1", password: "123456", email: "email1@email.com")
+user2 = User.create( username: "username2", password: "123456", email: "email2@email.com")
+
 puts "Finished!"
+
+
+puts "Cleaning cahampion database..."
+Champion.destroy_all
+puts "Creating champions..."
+the_hulk = Champion.create(name: "The Hulk", universe: "Earth-616 - Prime Marvel Universe", description: "Human-Radiation", rate: 10, user: user1)
+superman =  Champion.create( name: "superman", universe: "Prime Earth - Prime DC Comics Universe", description: "Kryptonian", rate: 20, user: user2)
+
+puts "Finished!"
+
+
