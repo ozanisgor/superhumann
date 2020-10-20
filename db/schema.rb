@@ -20,11 +20,22 @@ ActiveRecord::Schema.define(version: 2020_10_20_095134) do
     t.date "end_time"
     t.integer "total_price"
     t.bigint "user_id", null: false
-    t.bigint "super_hero_id", null: false
+    t.bigint "champion_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["super_hero_id"], name: "index_bookings_on_super_hero_id"
+    t.index ["champion_id"], name: "index_bookings_on_champion_id"
     t.index ["user_id"], name: "index_bookings_on_user_id"
+  end
+
+  create_table "champions", force: :cascade do |t|
+    t.string "name"
+    t.string "description"
+    t.string "universe"
+    t.integer "rate"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_champions_on_user_id"
   end
 
   create_table "reviews", force: :cascade do |t|
@@ -33,16 +44,6 @@ ActiveRecord::Schema.define(version: 2020_10_20_095134) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["booking_id"], name: "index_reviews_on_booking_id"
-  end
-
-  create_table "super_heros", force: :cascade do |t|
-    t.string "name"
-    t.string "description"
-    t.string "universe"
-    t.bigint "user_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["user_id"], name: "index_super_heros_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -58,8 +59,8 @@ ActiveRecord::Schema.define(version: 2020_10_20_095134) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "bookings", "super_heros"
+  add_foreign_key "bookings", "champions"
   add_foreign_key "bookings", "users"
+  add_foreign_key "champions", "users"
   add_foreign_key "reviews", "bookings"
-  add_foreign_key "super_heros", "users"
 end
