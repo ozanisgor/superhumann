@@ -4,17 +4,19 @@
     <p>Which super hero do you want to be?</p>
     <p>Choose your favorite!</p>
   </div>
+</div>
 
-
-
-<%@champions.each do |champion|%>
-
-  <div class="card-body"> 
-    <h5 class="card-title"><%= champion.name%></h5>
-       <p> <%= link_to 'More info', champion %></p>
-       <p> </p>
+<div class="container">
+  <div class="row">
+    <% @champions.each do |champion| %>
+      <div class="col-12 col-md-6 col-lg-3">
+        <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('https://unsplash.com/photos/qJDkJRTedNw');">
+          <div class="card-description">
+            <h2><%= champion.name %></h2>
+          </div>
+        </div>
+        <p> <%= link_to 'More info', champion %></p>
+      </div>
+    <% end %>
   </div>
-  
-  <% end%>
-
-
+</div>
