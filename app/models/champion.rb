@@ -4,4 +4,5 @@ class Champion < ApplicationRecord
   validates :description, presence: true
   validates :universe, presence: true
   validates :rate, presence: true
+  has_one_attached :photo
 end
