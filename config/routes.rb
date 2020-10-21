@@ -5,7 +5,9 @@ Rails.application.routes.draw do
   
   resources :champions, only: [ :index, :new, :create, :show ] do 
     resources :bookings, only: [ :new, :create ]
-    resources :reviews, only: [ :create ]
-  end
+    end
   resource :dashboard, only: [ :show ]
+  resources :bookings, only: [ ] do 
+    resources :reviews, only: [ :new, :create ]
+  end
 end
