@@ -3,11 +3,6 @@ class ChampionsController < ApplicationController
 
   def index
     @champions = Champion.all
-    @search = params["search"]
-    if @search.present?
-      @universe = @search["universe"]
-      @champions = Champion.where(universe: @universe)
-    end
   end
 
   def show
@@ -17,16 +12,16 @@ class ChampionsController < ApplicationController
 
 # test comment
   def create
-   
+
     @champion = Champion.new(champion_params)
     @champion.user = current_user
-       if @champion.save
+    if @champion.save
       redirect_to @champion, notice: 'Champion was successfully created.'
     else
       render :new
     end
   end
-  
+
   def new
     @champion = Champion.new
   end
