@@ -4,4 +4,17 @@
     <p>Which super hero do you want to be?</p>
     <p>Choose your favorite!</p>
   </div>
-</div>
+
+
+
+<%@champions.each do |champion|%>
+
+  <div class="card-body"> 
+    <h5 class="card-title"><%= champion.name%></h5>
+       <p> <%= link_to 'More info', champion %></p>
+       <p> </p>
+  </div>
+  
+  <% end%>
+
+
