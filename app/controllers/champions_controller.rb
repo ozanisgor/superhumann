@@ -3,7 +3,7 @@ class ChampionsController < ApplicationController
   def index
     @champions = Champion.all
   end
-
+# test comment
   def create
     @champion = Champion.new(champion_params)
 
