@@ -1,9 +1,13 @@
-<h2>All Super Heroes</h2>
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://images.unsplash.com/photo-1556707752-481d500a2c58?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80);">
+  <div class="container">
+    <h1>All Super Heroes</h1>
+    <p>Search by Universe</p>
+    <%= simple_form_for :search, url: champions_path, method: "GET", html: { class: 'form-inline' } do |f| %>
+      <%= f.input :universe, collection: Champion.universes ,input_html: {value: ""} %>   
+      <%= f.submit "Search", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</div>
 
-<h4>Search by Universe</h4>
-<%= simple_form_for :search, url: champions_path, method: "GET", html: { class: 'form-inline' } do |f| %>
-  <%= f.input :universe, input_html: {value: ""} %>   
-  <%= f.submit "Search", class: "btn btn-primary" %>
-<% end %>
 
 <p><%= link_to 'Champions', champions_path %></p>

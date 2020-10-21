@@ -1,8 +1,14 @@
 class ChampionsController < ApplicationController
-  skip_before_action :authenticate_user!, only: [ :index, :show]
+  skip_before_action :authenticate_user!, only: [ :index, :show ]
   
   def index
-    @champions = Champion.all
+    # if params[:search].present?
+    #   # filter based on params
+    #   @champions = Champion.where(universe: params[:search][:universe])
+    # else
+    #   @champions = Champion.all
+    # end
+    @champions = params[:search].present? ? Champion.where(universe: params[:search][:universe]) : Champion.all
   end
 
   def show
