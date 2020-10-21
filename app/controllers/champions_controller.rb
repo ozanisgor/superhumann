@@ -2,6 +2,11 @@ class ChampionsController < ApplicationController
 
   def index
     @champions = Champion.all
+    @search = params["search"]
+    if @search.present?
+      @universe = @search["universe"]
+      @champions = Champion.where(universe: @universe)
+    end
   end
 
   def show

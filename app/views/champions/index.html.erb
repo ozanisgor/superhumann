@@ -6,6 +6,14 @@
   </div>
 </div>
 
+<h2>All Super Heroes</h2>
+
+<h4>Search by Universe</h4>
+<%= simple_form_for :search, url: champions_path, method: "GET", html: { class: 'form-inline' } do |f| %>
+  <%= f.input :universe, input_html: {value: ""} %>   
+  <%= f.submit "Search", class: "btn btn-primary" %>
+<% end %>
+
 <div class="container">
   <div class="row">
     <% @champions.each do |champion| %>
