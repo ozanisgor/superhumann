@@ -1,6 +1,6 @@
 <div class="container">
   <h1><%= @champion.name %></h1>
-
+  <h2><%= cl_image_tag @champion.photo.key, height: 300, width: 400, crop: :fill %></h2>
   <%= link_to "Back to all champions", champions_path %>
   <br>
   <%# <%= cl_image_tag @champion.photo, height: 300, width: 400, crop: :fill %>
