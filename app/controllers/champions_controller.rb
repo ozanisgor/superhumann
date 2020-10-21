@@ -13,7 +13,6 @@ class ChampionsController < ApplicationController
       render :new
     end
   end
-
   
   def new
     @champion = Champion.new
