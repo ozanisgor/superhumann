@@ -5,3 +5,17 @@
     <p>Choose your favorite!</p>
   </div>
 </div>
+
+<div class="container">
+  <div class="row">
+    <% @champions.each do |champion| %>
+      <div class="col-12 col-md-6 col-lg-3">
+        <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('https://unsplash.com/photos/qJDkJRTedNw');">
+          <div class="card-description">
+            <h2><%= champion.name %></h2>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
