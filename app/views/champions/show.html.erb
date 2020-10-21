@@ -1,0 +1,21 @@
+<div class="container">
+  <h1><%= @champion.name %></h1>
+
+  <%= link_to "Back to all champions", champions_path %>
+  <br>
+  <%# <%= cl_image_tag @champion.photo, height: 300, width: 400, crop: :fill %>
+
+
+  <div class="row">
+    <div class="col-sm-12 col-md-6">
+      <table class="table table-bordered">
+        <tbody>
+          <thead>
+            <th>Description</th>
+            <th>Universe</th>
+            <th>Rate</th>
+          </thead>
+        </tbody>
+      </table>
+    </div>
+  </div>
