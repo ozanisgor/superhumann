@@ -6,16 +6,19 @@
   <%# <%= cl_image_tag @champion.photo, height: 300, width: 400, crop: :fill %>
 
 
-  <div class="row">
+  <div class="container">
     <div class="col-sm-12 col-md-6">
-      <table class="table table-bordered">
-        <tbody>
-          <thead>
-            <th>Description</th>
-            <th>Universe</th>
-            <th>Rate</th>
-          </thead>
-        </tbody>
-      </table>
+      <div>
+        <h4>Description</h4>
+        <p><%= @champion.description %></p>
+      </div>
+      <div>
+        <h4>Universe</h4>
+        <%= @champion.universe %>
+      </div>
+      <div>
+        <h4>Rate</h4>
+        <%= @champion.rate %>
+      </div>
     </div>
   </div>
