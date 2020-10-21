@@ -1,4 +1,5 @@
 class ChampionsController < ApplicationController
+  before_action :authenticate_user!
 
   def index
     @champions = Champion.all
@@ -6,8 +7,7 @@ class ChampionsController < ApplicationController
 
   def show
     @champion = Champion.find(params[:id])
-    @dose = Dose.new
-    @review = Review.new
+    # @review = Review.new
   end
 
 # test comment
