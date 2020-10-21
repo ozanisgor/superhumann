@@ -1,4 +1,5 @@
 class ChampionsController < ApplicationController
+  before_action :authenticate_user!
 
   def index
     @champions = Champion.all
@@ -11,21 +12,20 @@ class ChampionsController < ApplicationController
 
   def show
     @champion = Champion.find(params[:id])
-    @dose = Dose.new
-    @review = Review.new
+    # @review = Review.new
   end
 
 # test comment
   def create
+   
     @champion = Champion.new(champion_params)
-
-    if @champion.save
+    @champion.user = current_user
+       if @champion.save
       redirect_to @champion, notice: 'Champion was successfully created.'
     else
       render :new
     end
   end
-
   
   def new
     @champion = Champion.new

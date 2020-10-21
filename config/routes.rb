@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'dashboard/show'
   devise_for :users
   root to: 'pages#home'
   
@@ -6,4 +7,5 @@ Rails.application.routes.draw do
     resources :bookings, only: [ :new, :create ]
     resources :reviews, only: [ :create ]
   end
+  resource :dashboard, only: [ :show ]
 end
