@@ -3,6 +3,22 @@ class ChampionsController < ApplicationController
   def index
     @champions = Champion.all
   end
+# test comment
+  def create
+    @champion = Champion.new(champion_params)
+
+    if @champion.save
+      redirect_to @champion, notice: 'Champion was successfully created.'
+    else
+      render :new
+    end
+  end
+
+  
+  def new
+    @champion = Champion.new
+  end
+  
 
   private
 
