@@ -6,8 +6,10 @@
       <%= f.input :universe, collection: Champion.universes ,input_html: {value: ""} %>   
       <%= f.submit "Search", class: "btn btn-primary" %>
     <% end %>
+    <div>
+      <p>See All <%= link_to 'Super Heroes', champions_path, class: "btn btn-gradient" %></p>
+    </div>
   </div>
 </div>
 
 
-<p><%= link_to 'Champions', champions_path %></p>
