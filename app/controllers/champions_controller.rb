@@ -5,9 +5,10 @@ class ChampionsController < ApplicationController
   end
 # test comment
   def create
+   
     @champion = Champion.new(champion_params)
-
-    if @champion.save
+    @champion.user = current_user
+       if @champion.save
       redirect_to @champion, notice: 'Champion was successfully created.'
     else
       render :new
