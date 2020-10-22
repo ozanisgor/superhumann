@@ -1,11 +1,12 @@
 class ChampionsController < ApplicationController
   skip_before_action :authenticate_user!, only: [ :index, :show ]
-   def index
+  def index
     if params[:query].present?
       sql_query = " \
         champions.name @@ :query \
         OR champions.description @@ :query \
         OR champions.universe @@ :query \
+        OR champions.address @@ :query \
       "
       @champions = Champion.where(sql_query, query: "%#{params[:query]}%")
     else
@@ -16,7 +17,7 @@ class ChampionsController < ApplicationController
         lat: champion.latitude,
         lng: champion.longitude
       }
-    end
+     end
   end
 
   def show

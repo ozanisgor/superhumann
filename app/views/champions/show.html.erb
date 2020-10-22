@@ -1,11 +1,11 @@
 <div class="container">
   <h1><%= @champion.name %></h1>
-  <h2><%= cl_image_tag @champion.photo.key, height: 300, width: 400, crop: :fill %></h2>
-  <%= link_to "Back to all champions", champions_path %>
+  <h2><%= cl_image_tag @champion.photo.key, height: 300, width: 400, crop: :fill, class: "border" %></h2>
+  <%= link_to "Back", champions_path, class: "btn btn-gradient" %>
   <br>
   <%# <%= cl_image_tag @champion.photo, height: 300, width: 400, crop: :fill %>
   <div class="container">
-    <div class="col-sm-12 col-md-6">
+    <div class="cards-grid">
       <div>
         <h4>Description</h4>
         <p><%= @champion.description %></p>
@@ -18,9 +18,7 @@
         <h4>Rate</h4>
         <p><%= @champion.rate %> $</p>
       </div>
-      <div>
-        <%= link_to "Book #{@champion.name}", new_champion_booking_path(@champion) %>
-      </div>
+      <%= link_to "Book #{@champion.name}", new_champion_booking_path(@champion), class: "btn btn-flat mb-5" %>
     </div>
     <div>
       <h3>Reviews</h3>
@@ -37,8 +35,9 @@
       <% end %>
     </div>
   </div>
-<div id="map"
-     style="width: 100%; height: 600px;"
-     data-markers="<%= @markers.to_json %>"
-     data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
-</div>
+  <div id="map"
+      style="width: 100%; height: 600px;"
+      data-markers="<%= @markers.to_json %>"
+      data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+  </div>
+</div> 
