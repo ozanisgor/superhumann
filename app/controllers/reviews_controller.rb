@@ -1,14 +1,20 @@
 class ReviewsController < ApplicationController
   def create
-    @champion = Champion.find(params[:champion_id])
+    @booking = Booking.find(params[:booking_id])
     @review = Review.new(review_params)
-    @review.champion = @champion
+    @review.booking = @booking
     if @review.save
-      redirect_to champion_path(@champion)
+      redirect_to dashboard_path
     else
-      render "champions/show"
+      render :new
     end
   end
+
+  def new
+    @review = Review.new
+    @booking = Booking.find(params[:booking_id])
+  end
+
   private
 
   def review_params

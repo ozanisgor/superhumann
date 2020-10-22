@@ -1,6 +1,6 @@
 <div class="container">
   <h1><%= @champion.name %></h1>
-  <h2><%= cl_image_tag @champion.photo.key, height: 300, width: 400, crop: :fill %></h2>
+  <h2><%#= cl_image_tag @champion.photo.key, height: 300, width: 400, crop: :fill %></h2>
   <%= link_to "Back to all champions", champions_path %>
   <br>
   <%# <%= cl_image_tag @champion.photo, height: 300, width: 400, crop: :fill %>
@@ -21,4 +21,19 @@
         <%= @champion.rate %>
       </div>
     </div>
+    <div>
+      <h3>Reviews</h3>
+      <% if @champion.reviews.empty? %>
+        <p>Be the first to let a review</p>
+      <% else %>
+        <ul class="list-group">
+        <% @champion.reviews.each do |review| %>
+          <li class="list-group-item d-flex justify-content-between align-items-center">   
+          <%= review.content %> 
+          </li>
+        <% end %>
+        </ul>
+      <% end %>
+    </div>
   </div>
+</div>
