@@ -8,6 +8,7 @@
 require "open-uri"
 require 'date'
 
+Review.destroy_all
 User.destroy_all
 Champion.destroy_all
 Booking.destroy_all

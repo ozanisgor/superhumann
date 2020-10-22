@@ -16,6 +16,7 @@ class ChampionsController < ApplicationController
         lat: champion.latitude,
         lng: champion.longitude
       }
+    end
   end
 
   def show
