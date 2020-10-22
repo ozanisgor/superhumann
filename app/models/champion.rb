@@ -6,6 +6,8 @@ class Champion < ApplicationRecord
   validates :description, presence: true
   validates :universe, presence: true
   validates :rate, presence: true
+  validates :photo, presence: true
+  validates :address, presence: true
   has_one_attached :photo
   geocoded_by :address
   after_validation :geocode, if: :will_save_change_to_address?

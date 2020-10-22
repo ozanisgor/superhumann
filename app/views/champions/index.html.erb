@@ -1,28 +1,22 @@
-<div class="container">
-    <h1>Super Heroes</h1>
-    <p>Which super hero do you want to be?</p>
-    <p>Choose your favorite!</p>
-</div>
-
-
-<div class="container">
-  <div class="row">
-    <% @champions.each do |champion| %>
-      <div class="col-12 col-md-6 col-lg-3">
-      <div class="grid-item"><img class="card-img-top" src="<%= cl_image_path champion.photo.key if champion.photo.attached? %>" alt="Card image cap"></div>
-      <%# replacing with cloudinary image %>
-        <%# <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('https://unsplash.com/photos/qJDkJRTedNw');"> %>
-          <div class="card-description">
-            <h2><%= champion.name %></h2>
-        <p> <%= link_to 'More info', champion %></p>
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://images.unsplash.com/photo-1501630834273-4b5604d2ee31?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80);">
+  <div class="container text-center">
+    <h1>Find Your Super Hero</h1>
+    <p>Take a look inside</p>
+    <div class="cards-grid">
+        <% @champions.each do |champion| %>
+          <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path(champion.photo.key, :crop => :fill) %> ')">
+            <%= link_to champion.name, champion %>
           </div>
-        </div>
-      </div>
-    <% end %>
+        <% end %>
+    </div>
   </div>
 </div>
-<div id="map"
-     style="width: 100%; height: 600px;"
-     data-markers="<%= @markers.to_json %>"
-     data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+
+<div class="container">
+  <h2>Heroes are waiting for you below!</h2>
+    <div id="map"
+        style="width: 100%; height: 600px;"
+        data-markers="<%= @markers.to_json %>"
+        data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+    </div>
 </div>
