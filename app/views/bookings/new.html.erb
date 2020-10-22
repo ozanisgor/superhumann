@@ -1,6 +1,5 @@
-<h3>Add a new dose</h3>
-<%= simple_form_for [booking, champion] do |f| %>
-  <%= f.association :ingredient, input_html: { class: "beautiful-dropdown" }, include_hidden: false %>
+<h3>Add a new champion</h3>
+<%= simple_form_for [@champion, @booking] do |f| %>
   <%= f.input :start_time %>
   <%= f.input :end_time %>
   <%= f.button :submit, class: "btn btn-primary" %>

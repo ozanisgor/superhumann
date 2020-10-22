@@ -20,6 +20,9 @@
         <h4>Rate</h4>
         <p><%= @champion.rate %> $</p>
       </div>
+      <div>
+        <%= link_to "Book #{@champion.name}", new_champion_booking_path(@champion) %>
+      </div>
     </div>
     <div>
       <h3>Reviews</h3>
