@@ -1,7 +1,6 @@
 class ChampionsController < ApplicationController
   skip_before_action :authenticate_user!, only: [ :index, :show ]
-  
-  def index
+   def index
     # if params[:search].present?
     #   # filter based on params
     #   @champions = Champion.where(universe: params[:search][:universe])
@@ -9,11 +8,21 @@ class ChampionsController < ApplicationController
     #   @champions = Champion.all
     # end
     @champions = params[:search].present? ? Champion.where(universe: params[:search][:universe]) : Champion.all
+    @markers = @champions.geocoded.map do |champion|
+      {
+        lat: champion.latitude,
+        lng: champion.longitude
+      }
+    end
   end
 
   def show
     @champion = Champion.find(params[:id])
-    # @review = Review.new
+    @markers = [ {
+      lat: @champion.latitude,
+      lng: @champion.longitude
+    }]
+         
   end
 
 # test comment
@@ -36,6 +45,6 @@ class ChampionsController < ApplicationController
   private
 
   def champion_params
-    params.require(:champion).permit(:name, :description, :universe, :rate, :photo)
+    params.require(:champion).permit(:name, :description, :universe, :rate, :photo, :address)
   end
 end
