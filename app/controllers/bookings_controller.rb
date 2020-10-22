@@ -1,7 +1,12 @@
 class BookingsController < ApplicationController
  
   def new
+    @champion = Champion.find(params[:champion_id])
     @booking = Booking.new
+  end
+
+  def show
+    @booking = Booking.find(params[:id])
   end
 
   def create
@@ -13,6 +18,7 @@ class BookingsController < ApplicationController
     @booking.champion = @champion
     # step 4 associate the user with the booking
     @booking.user = current_user
+    @booking.total_price = (@booking.end_time - @booking.start_time).to_i * @champion.rate
     if @booking.save
       redirect_to booking_path(@booking)
     else
