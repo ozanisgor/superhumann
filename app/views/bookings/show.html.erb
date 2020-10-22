@@ -1,2 +1,5 @@
-<h1>You successfully booked! <%= @booking.champion.name %></h1>
-<h2>Total: <%= @booking.total_price %> $</h2>
+<div class="container">
+  <h1>You successfully booked <%= @booking.champion.name %> between <%= @booking.start_time %> and <%= @booking.end_time %> dates!</h1>
+  <h2>Use your powers for good ;)</h2>
+  <h2>Total: <%= @booking.total_price %> $</h2>
+</div>
