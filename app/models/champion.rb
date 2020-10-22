@@ -7,7 +7,8 @@ class Champion < ApplicationRecord
   validates :universe, presence: true
   validates :rate, presence: true
   has_one_attached :photo
-  
+  geocoded_by :address
+  after_validation :geocode, if: :will_save_change_to_address?
   def self.universes
     ["Earth-616 - Prime Marvel Universe", "Prime Earth - Prime DC Comics Universe", "Marvel"]
   end

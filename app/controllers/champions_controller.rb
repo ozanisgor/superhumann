@@ -1,29 +1,30 @@
 class ChampionsController < ApplicationController
   skip_before_action :authenticate_user!, only: [ :index, :show ]
-  
-  def index
-    # if params[:search].present?
-    #   # filter based on params
-    #   @champions = Champion.where(universe: params[:search][:universe])
-    # else
-    #   @champions = Champion.all
-    # end
-    # @champions = params[:search].present? ? Champion.where(universe: params[:search][:universe]) : Champion.all
+   def index
     if params[:query].present?
       sql_query = " \
-        champions.name ILIKE :query \
-        OR champions.description ILIKE :query \
-        OR champions.universe ILIKE :query \
+        champions.name @@ :query \
+        OR champions.description @@ :query \
+        OR champions.universe @@ :query \
       "
       @champions = Champion.where(sql_query, query: "%#{params[:query]}%")
     else
       @champions = Champion.all
     end
+     @markers = @champions.geocoded.map do |champion|
+      {
+        lat: champion.latitude,
+        lng: champion.longitude
+      }
   end
 
   def show
     @champion = Champion.find(params[:id])
-    # @review = Review.new
+    @markers = [ {
+      lat: @champion.latitude,
+      lng: @champion.longitude
+    }]
+         
   end
 
 # test comment
@@ -46,6 +47,6 @@ class ChampionsController < ApplicationController
   private
 
   def champion_params
-    params.require(:champion).permit(:name, :description, :universe, :rate, :photo)
+    params.require(:champion).permit(:name, :description, :universe, :rate, :photo, :address)
   end
 end
