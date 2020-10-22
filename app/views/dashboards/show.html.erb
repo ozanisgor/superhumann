@@ -9,7 +9,10 @@
           <div class="card-description">
             <h2><%= booking.user.username %></h2>
             <h2><%= booking.start_time %></h2>
-            <h2><%= booking.end_time %></h2>           
+            <h2><%= booking.end_time %></h2>
+            <% unless booking.review %>
+              <%= link_to "Leave a review", new_booking_review_path(booking) %>           
+            <% end%>
           </div>
         </div>
       </div>

@@ -1,15 +1,27 @@
 <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://images.unsplash.com/photo-1556707752-481d500a2c58?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80);">
   <div class="container">
     <h1>All Super Heroes</h1>
-    <p>Search by Universe</p>
-    <%= simple_form_for :search, url: champions_path, method: "GET", html: { class: 'form-inline' } do |f| %>
-      <%= f.input :universe, collection: Champion.universes ,input_html: {value: ""} %>   
-      <%= f.submit "Search", class: "btn btn-primary" %>
+    <%= form_tag champions_path, method: :get do %>
+      <%= text_field_tag :query,
+        params[:query],
+        class: "form-control",
+        placeholder: "Find superheroes"
+      %>
     <% end %>
-    <div>
-      <p>See All <%= link_to 'Super Heroes', champions_path, class: "btn btn-gradient" %></p>
+    <div class="mt-5">
+      <%= link_to 'Browse Super Heroes', champions_path, class: "btn btn-flat" %>
     </div>
   </div>
 </div>
 
 
+
+<div class="container">
+  <div class="cards-grid">
+    <% @champions.each do |champion| %>
+      <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path(champion.photo.key, :crop => :fill) %> ')">
+        <%= link_to champion.name, champion_path(champion) %>
+      </div>
+    <% end %>
+  </div>
+</div>

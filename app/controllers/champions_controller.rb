@@ -1,19 +1,21 @@
 class ChampionsController < ApplicationController
   skip_before_action :authenticate_user!, only: [ :index, :show ]
    def index
-    # if params[:search].present?
-    #   # filter based on params
-    #   @champions = Champion.where(universe: params[:search][:universe])
-    # else
-    #   @champions = Champion.all
-    # end
-    @champions = params[:search].present? ? Champion.where(universe: params[:search][:universe]) : Champion.all
-    @markers = @champions.geocoded.map do |champion|
+    if params[:query].present?
+      sql_query = " \
+        champions.name @@ :query \
+        OR champions.description @@ :query \
+        OR champions.universe @@ :query \
+      "
+      @champions = Champion.where(sql_query, query: "%#{params[:query]}%")
+    else
+      @champions = Champion.all
+    end
+     @markers = @champions.geocoded.map do |champion|
       {
         lat: champion.latitude,
         lng: champion.longitude
       }
-    end
   end
 
   def show
