@@ -8,7 +8,17 @@ class ChampionsController < ApplicationController
     # else
     #   @champions = Champion.all
     # end
-    @champions = params[:search].present? ? Champion.where(universe: params[:search][:universe]) : Champion.all
+    # @champions = params[:search].present? ? Champion.where(universe: params[:search][:universe]) : Champion.all
+    if params[:query].present?
+      sql_query = " \
+        champions.name ILIKE :query \
+        OR champions.description ILIKE :query \
+        OR champions.universe ILIKE :query \
+      "
+      @champions = Champion.where(sql_query, query: "%#{params[:query]}%")
+    else
+      @champions = Champion.all
+    end
   end
 
   def show
