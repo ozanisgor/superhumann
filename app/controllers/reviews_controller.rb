@@ -4,7 +4,7 @@ class ReviewsController < ApplicationController
     @review = Review.new(review_params)
     @review.booking = @booking
     if @review.save
-      redirect_to dashboard_path
+      redirect_to champion_path(@booking.champion)
     else
       render :new
     end

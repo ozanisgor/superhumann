@@ -66,7 +66,7 @@ wonder_woman =  Champion.create( name: "Wonder Woman", universe: "Prime Earth - 
 wonder_woman.photo.attach(io: file8, filename: 'wonder_woman.jpg', content_type: 'image/jpg')
 wonder_woman.save
 
-file9 = URI.open('https://wallup.net/wp-content/uploads/2017/03/29/496165-World_of_Warcraft_Legion-Illidan_Stormrage-Glaive-demon_horns.jpg')
+file9 = URI.open('https://wallpaperplay.com/walls/full/6/2/6/145910.jpg')
 illidan_stormrage =  Champion.create( name: "Illidan Stormrage", universe: "World of Warcraft", description: "Betrayer's Thirst, Sweeping Strike, Evasion, Metamorphosis, Demonic Form, Sixth Sense, Immolation", rate: 250, address: "122 Sherwood Dr", user: user1)
 illidan_stormrage.photo.attach(io: file9, filename: 'illidan_Stormrage.jpg', content_type: 'image/jpg')
 illidan_stormrage.save
