@@ -1,5 +1,4 @@
-<h1 style="text-align: center">My Bookings</h1>
-<p style="text-align: center"> These are my bookings. </p>
+<h1 class="mt-5" style="text-align: center">My Bookings</h1>
 <div class= "container">
   <div class="row">
     <% @bookings.each do |booking| %>
@@ -28,9 +27,8 @@
 
 <div class="container">
   <h1 style="text-align: center">My Offerings</h1>
-  <p style="text-align: center"> These are my champion offerings. </p>
   <div class="text-center">
-  <%= link_to "Rent a champion", new_champion_path, class:"btn btn-gradient"  %>
+  <%= link_to "Rent a Super Hero", new_champion_path, class:"btn btn-gradient"  %>
   </div>
   <div class="container">
     <div class="row">
