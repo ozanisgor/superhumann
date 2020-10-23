@@ -1,6 +1,8 @@
-<h3>Add a new champion</h3>
-<%= simple_form_for [@champion, @booking] do |f| %>
-  <%= f.input :start_time %>
-  <%= f.input :end_time %>
-  <%= f.button :submit, class: "btn btn-primary" %>
-<% end %>
+<div class="container">
+  <h3><%= "Booking for #{@champion.name}" %></h3>
+  <%= simple_form_for [@champion, @booking] do |f| %>
+    <%= f.input :start_time %>
+    <%= f.input :end_time %>
+    <%= f.button :submit, class: "btn btn-flat" %>
+  <% end %>
+</div>
