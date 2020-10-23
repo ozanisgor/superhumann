@@ -51,12 +51,12 @@ spider_man = Champion.create(name: "Spider Man", universe: "Earth-616 - Prime Ma
 spider_man.photo.attach(io: file5, filename: 'spider_man.jpg', content_type: 'image/jpg')
 spider_man.save
 
-file6 = URI.open('https://images3.alphacoders.com/103/1033318.jpg')
+file6 = URI.open('https://wallpaperskingdom.com/sites/default/files/batman-hd-wallpapers-32788-5310503.jpg')
 batman = Champion.create(name: "Batman", universe: "Prime Earth - Prime DC Comics Universe", description: "Exceptional Martial Artist, Combat Strategy, Inexhaustible Wealth, Brilliant Deductive Skill, Advanced Technology", rate: 180, address: "batman park avm", user: user2)
 batman.photo.attach(io: file6, filename: 'batman.jpg', content_type: 'image/jpg')
 batman.save
 
-file7 = URI.open('https://themotherofallnerds.com/wp-content/uploads/2020/02/joker-stairs-dancing-scene-clip-warner-bros-entertainment-Tl5zk46i0Bs.jpg')
+file7 = URI.open('http://getwallpapers.com/wallpaper/full/0/b/9/629218.jpg')
 joker =  Champion.create( name: "Joker", universe: "Prime Earth - Prime DC Comics Universe", description: "Complete Unpredictability, Chaos Agent, Customized Weapons, Wields Toxin Which Causes Victims to Die Laughing", rate: 90, address: "926 Dagger Spring Rd", user: user3)
 joker.photo.attach(io: file7, filename: 'joker.jpg', content_type: 'image/jpg')
 joker.save
