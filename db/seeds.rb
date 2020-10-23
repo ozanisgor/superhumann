@@ -27,9 +27,10 @@ puts "Cleaning champion database..."
 puts "Creating champions..."
 
 file = URI.open('https://i.cdn.newsbytesapp.com/images/110_11991580378536.jpg')
+
 the_hulk = Champion.create(name: "The Hulk", universe: "Earth-616 - Prime Marvel Universe", description: "Immortality, Berserk Mode, Radiation Absorption, Shapeshifting, Super Strength", rate: 300, address: "618 N Center St", user: user1)
 the_hulk.photo.attach(io: file, filename: 'hulk.jpg', content_type: 'image/jpg')
-the_hulk.save
+the_hulk.save!
 
 file2 = URI.open('https://i.pinimg.com/originals/de/45/c5/de45c51de2196cd860b93da0d66626e5.jpg')
 superman =  Champion.create( name: "Superman", universe: "Prime Earth - Prime DC Comics Universe", description: "Super Breath, Flight, Super Strength, Psionic Powers Super Speed", rate: 500, address: "225 County Rd", user: user2)
@@ -39,12 +40,13 @@ superman.save
 file3 = URI.open('https://mewallpaper.com/thumbnail/movies/6990-iron-man-armor-free-photo-wallpaper.jpg')
 ironman =  Champion.create( name: "Ironman", universe: "Earth-616 - Prime Marvel Universe", description: "Energy Beams, Flight, Power Suit, Hacking, Marksmanship", rate: 200, address: "211 N East St", user: user3)
 ironman.photo.attach(io: file3, filename: 'ironman.jpg', content_type: 'image/jpg')
-ironman.save
+ironman.save!
 
 file4 = URI.open('https://i.pinimg.com/originals/ed/09/57/ed0957e68e5354c7da72c3540fe99770.jpg')
+
 thor = Champion.create(name: "Thor", universe: "Earth-616 - Prime Marvel Universe", description: "Godly Physiology, Portal Creation, Weapon-based Powers, Odin Force, Teleportation", rate: 200, address: "1636 Glassboro Rd", user: user4)
 thor.photo.attach(io: file4, filename: 'thor.jpg', content_type: 'image/jpg')
-thor.save
+thor.save!
 
 file5 = URI.open('https://wallpaperaccess.com/full/496594.jpg')
 spider_man = Champion.create(name: "Spider Man", universe: "Earth-616 - Prime Marvel Universe", description: "Wallcrawling, Danger Sense, Web Creation, Acrobatics, Agility", rate: 150, address: "8839 69th Road", user: user1)

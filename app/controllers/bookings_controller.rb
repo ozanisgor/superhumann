@@ -21,14 +21,24 @@ class BookingsController < ApplicationController
     @booking.total_price = (@booking.end_time - @booking.start_time).to_i * @champion.rate
     if @booking.save
       redirect_to booking_path(@booking)
+      BookingMailer.with(booking: @booking).new_booking_email.deliver_later
     else
       render 'new'
+    end
+  end
+
+  def update
+    @booking = Booking.find(params[:id])
+    if @booking.update(booking_params)
+      redirect_to dashboard_path, notice: 'Offer was successfully updated.'
+    else
+      redirect_to dashboard_path, notice: 'Offer was not updated.'
     end
   end
 
   private
 
   def booking_params
-    params.require(:booking).permit(:start_time, :end_time)
+    params.require(:booking).permit(:start_time, :end_time, :status)
   end
 end
