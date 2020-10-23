@@ -1,43 +1,52 @@
 <div class="container">
-  <h1><%= @champion.name %></h1>
-  <h2><%= cl_image_tag @champion.photo.key, height: 300, width: 400, crop: :fill, class: "border" %></h2>
-  <%= link_to "Back", champions_path, class: "btn btn-gradient" %>
-  <br>
-  <%# <%= cl_image_tag @champion.photo, height: 300, width: 400, crop: :fill %>
-  <div class="container">
-    <div class="cards-grid">
-      <div>
+  <div class="d-flex justify-content-start">
+    <%= link_to "Back", champions_path, class: "btn btn-gradient mb-3" %>
+  </div>
+  <div class="d-flex justify-content-around align-items-center">
+    <div class="mr-3">
+      <h2><%= @champion.name %></h2>
+      <%= cl_image_tag @champion.photo.key, height: 300, width: 400, crop: :fill, class: "border" %>
+    </div>
+    <div class="d-flex justify-content-around">
+      <div class="mr-3">
         <h4>Description</h4>
         <p><%= @champion.description %></p>
       </div>
-      <div>
+      <div class="mr-3">
         <h4>Universe</h4>
         <%= @champion.universe %>
       </div>
-      <div>
+      <div class="mr-3">
         <h4>Rate</h4>
         <p><%= @champion.rate %> $</p>
       </div>
-      <%= link_to "Book #{@champion.name}", new_champion_booking_path(@champion), class: "btn btn-flat mb-5" %>
-    </div>
-    <div>
-      <h3>Reviews</h3>
-      <% if @champion.reviews.empty? %>
-        <p>Be the first to let a review</p>
-      <% else %>
-        <ul class="list-group">
-        <% @champion.reviews.each do |review| %>
-          <li class="list-group-item d-flex justify-content-between align-items-center">   
-          <%= review.content %> 
-          </li>
-        <% end %>
-        </ul>
-      <% end %>
     </div>
   </div>
+   <div class="d-flex align-items-start flex-column">
+      <%= link_to "Book #{@champion.name}", new_champion_booking_path(@champion), class: "btn btn-flat mb-5" %>
+      <div>
+        <h3>Reviews</h3>
+        <% if @champion.reviews.empty? %>
+          <p>Be the first to let a review</p>
+        <% else %>
+          <ul class="list-group">
+          <% @champion.reviews.each do |review| %>
+            <li class="list-group-item d-flex justify-content-between align-items-center">   
+            <%= review.content %> 
+            </li>
+          <% end %>
+          </ul>
+        <% end %>
+      </div>
+    </div>
+</div>
+
+<div class="container">
+   
   <div id="map"
       style="width: 100%; height: 600px;"
       data-markers="<%= @markers.to_json %>"
       data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
   </div>
+
 </div> 
