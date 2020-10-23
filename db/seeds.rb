@@ -15,9 +15,9 @@ Booking.destroy_all
 
 puts "Cleaning user database..."
 puts "Creating users..."
-user1 = User.create(username: "username1", password: "123456", email: "email1@email.com")
-user2 = User.create( username: "username2", password: "123456", email: "email2@email.com")
-user3 = User.create( username: "username3", password: "123456", email: "email3@email.com")
+user1 = User.create(username: "ozanisgor", password: "123456", email: "email1@email.com")
+user2 = User.create( username: "cagataysoyer", password: "123456", email: "email2@email.com")
+user3 = User.create( username: "leena", password: "123456", email: "email3@email.com")
 user4 = User.create( username: "username4", password: "123456", email: "email4@email.com")
 
 puts "Finished!"
@@ -88,29 +88,36 @@ asterix =  Champion.create( name: "Asterix", universe: "Ancient Rome", descripti
 asterix.photo.attach(io: file12, filename: 'asterix.png', content_type: 'image/png')
 asterix.save
 
-file13 = URI.open('https://cdn.bulbagarden.net/upload/2/21/001Bulbasaur.png')
+file13 = URI.open('https://wallpapercave.com/wp/wp2388365.jpg')
 bulbasaur =  Champion.create( name: "Bulbasaur", universe: "Pokemon", description: "Magical Leaf, Solar Beam, Giga Drain, Leaf Storm, Body Slam, Seed Bomb", rate: 130, address: "72 Steade Road, Sheffield", user: user2)
-bulbasaur.photo.attach(io: file13, filename: 'bulbasaur.png', content_type: 'image/png')
+bulbasaur.photo.attach(io: file13, filename: 'bulbasaur.jpg', content_type: 'image/jpg')
 bulbasaur.save
 
-file14 = URI.open('https://cdn.bulbagarden.net/upload/thumb/7/73/004Charmander.png/375px-004Charmander.png')
+file14 = URI.open('https://wallpapercave.com/wp/xrd9xuz.jpg')
 charmender =  Champion.create( name: "Charmender", universe: "Pokemon", description: "Fire Spin, Fire Fang, Shadow Claw, Flamethrower, Overheat, Dragon Pulse", rate: 130, address: "The Park Cottage, Chinnor Road, Aston Rowant", user: user3)
-charmender.photo.attach(io: file14, filename: 'charmender.png', content_type: 'image/png')
+charmender.photo.attach(io: file14, filename: 'charmender.jpg', content_type: 'image/jpg')
 charmender.save
 
-file15 = URI.open('https://cdn.bulbagarden.net/upload/thumb/3/39/007Squirtle.png/375px-007Squirtle.png')
+file15 = URI.open('https://wallpapercave.com/wp/G8CE8Gu.jpg')
 squirtle =  Champion.create( name: "Squirtle", universe: "Pokemon", description: "Whirlpool, Hydro Pump, Surf, Waterfall, Blizzard, Body Slam", rate: 130, address: "5 The Pathway, Birmingham", user: user4)
-squirtle.photo.attach(io: file15, filename: 'squirtle.png', content_type: 'image/png')
+squirtle.photo.attach(io: file15, filename: 'squirtle.jpg', content_type: 'image/jpg')
 squirtle.save
 
+file16 = URI.open('https://images.halloweencostumes.com/products/26923/2-1-98022/plus-size-authentic-darth-vader-costume9.jpg')
+darth_vader =  Champion.create( name: "Darth Vader", universe: "Star Wars", description: "Berserk Mode, Body Puppetry, Darkforce Manipulation, Telekinesis, Telepathy, The Force", rate: 350, address: "Bissingzeile 43", user: user2)
+darth_vader.photo.attach(io: file16, filename: 'darth_vader.jpg', content_type: 'image/jpg')
+darth_vader.save
 
+file17 = URI.open('https://wallpapercave.com/wp/wp3984493.jpg')
+luke_skywalker =  Champion.create( name: "Luke Skywalker", universe: "Star Wars", description: "Astral Projection, Cloaking, Danger Sense, Force Fields, Illusions, Jump, Light Control", rate: 300, address: "Heinrich Heine Platz 91", user: user1)
+luke_skywalker.photo.attach(io: file17, filename: 'luke_skywalker.jpg', content_type: 'image/jpg')
+luke_skywalker.save
+
+file18 = URI.open('https://wallpapercave.com/wp/wp2904092.jpg')
+sherlock =  Champion.create( name: "Sherlock Holmes", universe: "Earth", description: "Enhanced Memory, Intelligence, Stamina, Enhanced Senses, Master Tactician, Endurance, Perfect Recollection, Stealth", rate: 500, address: "221B Baker Street", user: user1)
+sherlock.photo.attach(io: file18, filename: 'sherlock.jpg', content_type: 'image/jpg')
+sherlock.save
 
 puts "#{Champion.count} champions created"
 
-puts "Cleaning booking database..."
-puts "creating bookings ..."
-10.times { booking = Booking.create(start_time:Date.parse('2001-02-03') , end_time:Date.parse('2001-02-03') , total_price: 554, user: user1, champion: the_hulk)}
-puts "Finished!"
-
-puts Booking.count
 
