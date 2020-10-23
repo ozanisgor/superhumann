@@ -4,15 +4,20 @@
   <div class="row">
     <% @bookings.each do |booking| %>
       <div class="col-12 col-md-6 col-lg-3">
-        <div class="card mb-3" >
-          <div class="card-description">
-            <h4>Name: <%= booking.user.username %></h4>
-            <h4>Start Date: <%= booking.start_time %></h4>
-            <h4>End Date: <%= booking.end_time %></h4>
-             <h4>Total Price: <%= booking.total_price %></h4>
+        <div class="card-grid mb-3" >
+          <div class="card">
+          <%= cl_image_tag booking.champion.photo.key,crop: :fill, class: "border w-100" %>
+          <div class="p-3">
+            <p><b>Owner:</b> <%= booking.champion.user.username %></p>
+            <p><b>from:</b> <%= booking.start_time %></p>
+            <p><b>To:</b> <%= booking.end_time %></p>
+            <p><b>Total Price:</b> <%= booking.total_price %></p>
+         
+            
             <% unless booking.review %>
               <%= link_to "Leave a review", new_booking_review_path(booking) %>           
             <% end%>
+            </div>
           </div>
         </div>
       </div>
@@ -24,29 +29,31 @@
 <div class="container">
   <h1 style="text-align: center">My Offerings</h1>
   <p style="text-align: center"> These are my champion offerings. </p>
-  <%= link_to "Add new champion", new_champion_path, class:"btn btn-primary"  %>
-
+  <div class="text-center">
+  <%= link_to "Rent a champion", new_champion_path, class:"btn btn-gradient"  %>
+  </div>
   <div class="container">
     <div class="row">
       <% @champions.each do |champion| %>
        <% champion.bookings.each do |booking|%>
         <div class="col-12 col-md-6 col-lg-3">
        
-          <div class="card mb-3" >
+          <div class="card mb-3 p-2" >
             <div class="card-description">
               
-                <p> <%= booking.user.username%> </p>
-                <p> <%= booking.user.email%> </p>
-                <p> <%= booking.total_price%> </p>
-                 <p> <%= booking.status%> </p>
+                <p><b>Name:</b> <%= booking.user.username%> </p>
+                <p><b>email:</b> <%= booking.user.email%> </p>
+                <p><b>Total price:</b> <%= booking.total_price%> </p>
+                 <p><b>Status:</b> <%= booking.status%> </p>
                 <% if booking.status != "accepted" %>
-                <%= link_to "Accept", booking_path(booking, booking: {status: "accepted"}), method: :patch, class:"btn btn-primary"  %>
+                <div class="d-flex justify-content-around">
+                <%= link_to "Accept", booking_path(booking, booking: {status: "accepted"}), method: :patch, class:"btn btn-gradient"  %>
                 <% end %>
-                
                 <% if booking.status != "declined" %>
-                <%= link_to "Decline", booking_path(booking, booking: {status: "declined"}), method: :patch, class:"btn btn-primary"  %>
-               <% end %>
+                <%= link_to "Decline", booking_path(booking, booking: {status: "declined"}), method: :patch, class:"btn btn-gradient"  %>
+                <% end %>
             <%# username want to rent from start date to end date %>
+                </div>
               
             </div>
           </div>
